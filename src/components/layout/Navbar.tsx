@@ -52,7 +52,7 @@ const NAV: NavItem[] = [
     label: "Company",
     dropdown: [
       { label: "About Us", href: "/about", description: "Mission, values, and the story behind PCE",  icon: Info },
-      { label: "Team",     href: "/about", description: "The people building Africa's EV backbone",   icon: UserCircle },
+      { label: "Team",     href: "/about#leadership-team", description: "The people building Africa's EV backbone",   icon: UserCircle },
       { label: "Blog",     href: "/blog",  description: "Insights, news, and infrastructure updates", icon: BookOpen },
     ],
   },

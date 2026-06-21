@@ -1,136 +1,217 @@
 import type { Metadata } from "next";
-import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { CTASection } from "@/components/sections/CTASection";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { WhatWeBuild } from "@/components/sections/WhatWeBuild";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "The team and mission behind Phoenix Creed Energy.",
+  description: "Phoenix Creed Energy — Building the infrastructure for Africa's electric future.",
 };
 
-const values = [
-  { title: "African-first", desc: "Built by Africans, for Africa. Every design decision starts with the continent's unique infrastructure realities." },
-  { title: "Relentlessly reliable", desc: "An EV is only as good as the charger it depends on. 99% uptime isn't a target — it's the floor." },
-  { title: "Radically open", desc: "Our network is open-protocol. Any EV brand, any charge level — all welcome at every PCE station." },
-  { title: "Climate accountable", desc: "Every kWh delivered is 100% renewable-sourced. Every ton of CO₂ avoided is tracked and disclosed." },
-];
-
+/* ─── Data ───────────────────────────────────────────────────── */
 const team = [
-  { name: "Chidi Okonkwo", role: "Co-founder & CEO", country: "Nigeria", initials: "CO" },
-  { name: "Amara Diallo", role: "Co-founder & CTO", country: "Senegal", initials: "AD" },
-  { name: "Fatima Al-Rashid", role: "Chief Operating Officer", country: "Egypt", initials: "FR" },
-  { name: "Sipho Dlamini", role: "Chief Revenue Officer", country: "South Africa", initials: "SD" },
-  { name: "Grace Wanjiku", role: "VP Engineering", country: "Kenya", initials: "GW" },
-  { name: "Kwame Asante", role: "VP Partnerships", country: "Ghana", initials: "KA" },
+  {
+    initials: "OO",
+    name: "Onyeka Obiugo",
+    role: "Founder & CEO",
+    bio: "Founder of Phoenix Creed Energy, building the infrastructure layer for Africa's transition to electric mobility.",
+  },
+  {
+    initials: "VA",
+    name: "Valentine Agodi",
+    role: "Chief Technology Officer",
+    bio: "Leading technology strategy, software platforms, and digital infrastructure across the PCE ecosystem.",
+  },
+  {
+    initials: "MJ",
+    name: "Mr John",
+    role: "Chief Operating Officer",
+    bio: "Overseeing operations, deployment execution, strategic partnerships, and organizational growth.",
+  },
+  {
+    initials: "ES",
+    name: "Engr Steven",
+    role: "Lead Engineer",
+    bio: "Leading charging infrastructure development, energy systems integration, and technical deployment.",
+  },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-white overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
+      {/* ── Section 1: Hero ──────────────────────────────────── */}
+      <section className="bg-white pt-40 pb-28 md:pt-52 md:pb-36">
+        <div className="section-padding max-w-[1100px] mx-auto text-center">
+          <h1
+            className="font-bold text-pce-dark tracking-tight leading-[1.04] mb-8"
+            style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.6rem)" }}
+          >
+            Building the infrastructure for<br />
+            Africa&apos;s electric future.
+          </h1>
+          <p
+            className="text-pce-gray leading-relaxed mx-auto"
+            style={{ fontSize: "clamp(1rem, 1.6vw, 1.2rem)", maxWidth: 600 }}
+          >
+            Phoenix Creed Energy is developing EV charging infrastructure,
+            energy storage systems, and intelligent mobility software for Africa.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Section 2: Cinematic full-width image ────────────── */}
+      <section className="w-full overflow-hidden" style={{ height: "clamp(380px, 55vw, 780px)" }}>
+        <div className="relative w-full h-full">
+          <Image
+            src="/about-us.png"
+            alt="Phoenix Creed Energy — Africa's electric future"
+            fill
+            className="object-cover"
+            style={{ objectPosition: "center 45%" }}
+            priority
+            sizes="100vw"
+          />
+        </div>
+      </section>
+
+      {/* ── Section 3: What we build ─────────────────────────── */}
+      <WhatWeBuild />
+
+      {/* ── Section 4: Leadership Team ────────────────────────── */}
+      {/* scroll-mt-24 offsets the 72px fixed navbar so the anchor lands correctly */}
+      <section
+        id="leadership-team"
+        className="scroll-mt-24 py-28 md:py-40"
+        style={{ background: "#F5F7FA" }}
+      >
+        <div className="section-padding max-w-[1100px] mx-auto">
+
+          {/* Header */}
+          <div className="text-center mb-20">
+            <p
+              className="text-[11px] font-bold tracking-[0.18em] uppercase mb-5"
+              style={{ color: "rgba(0,0,0,0.32)" }}
+            >
+              Leadership Team
+            </p>
+            <h2
+              className="font-bold text-pce-dark tracking-tight leading-tight mb-5"
+              style={{ fontSize: "clamp(1.9rem, 3.8vw, 3rem)" }}
+            >
+              The people building Africa&apos;s electric future.
+            </h2>
+            <p className="text-pce-gray mx-auto" style={{ maxWidth: 520, fontSize: "1.05rem", lineHeight: 1.7 }}>
+              A multidisciplinary team focused on charging infrastructure, energy systems,
+              and intelligent mobility technology.
+            </p>
+          </div>
+
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className="bg-white rounded-2xl p-8 flex flex-col gap-6 transition-all duration-200"
+                style={{ border: "1px solid #EAEEF4" }}
+              >
+                {/* Avatar */}
+                <div
+                  className="rounded-xl flex items-center justify-center shrink-0"
+                  style={{
+                    width: "100%",
+                    aspectRatio: "1 / 1",
+                    maxWidth: 120,
+                    background: "linear-gradient(135deg, #0058B3 0%, #30E7ED 100%)",
+                  }}
+                >
+                  <span
+                    className="text-white font-bold"
+                    style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", letterSpacing: "-0.02em" }}
+                  >
+                    {member.initials}
+                  </span>
+                </div>
+
+                {/* Text */}
+                <div>
+                  <p
+                    className="text-[10px] font-bold tracking-[0.14em] uppercase mb-2"
+                    style={{ color: "#0058B3" }}
+                  >
+                    {member.role}
+                  </p>
+                  <h3
+                    className="font-bold text-pce-dark mb-3 leading-tight"
+                    style={{ fontSize: "1.05rem" }}
+                  >
+                    {member.name}
+                  </h3>
+                  <p className="text-pce-gray text-sm leading-relaxed">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── Section 5: Vision ────────────────────────────────── */}
+      <section className="bg-white py-32 md:py-48">
+        <div className="section-padding max-w-[860px] mx-auto text-center">
+          <p
+            className="text-[11px] font-bold tracking-[0.18em] uppercase mb-10"
+            style={{ color: "rgba(0,0,0,0.32)" }}
+          >
+            Our Vision
+          </p>
+          <p
+            className="font-bold text-pce-dark leading-tight tracking-tight"
+            style={{ fontSize: "clamp(1.8rem, 4vw, 3.4rem)" }}
+          >
+            To become Africa&apos;s leading electric
+            mobility infrastructure company.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Section 6: CTA ───────────────────────────────────── */}
+      <section
+        className="relative py-28 md:py-40"
+        style={{ background: "linear-gradient(135deg, #060d1f 0%, #0a1628 100%)" }}
+      >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "linear-gradient(rgba(0,88,179,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,88,179,0.03) 1px, transparent 1px)",
-            backgroundSize: "72px 72px",
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
           }}
         />
-        <div className="relative section-padding max-w-[1440px] mx-auto">
-          <AnimatedSection>
-            <div className="chip mb-5">Our Mission</div>
-            <h1 className="text-5xl md:text-7xl font-bold text-pce-dark mb-6 max-w-4xl leading-tight">
-              We believe Africa's roads should be electric.
-            </h1>
-            <p className="text-pce-gray text-lg md:text-xl max-w-2xl leading-relaxed">
-              Phoenix Creed Energy was founded in 2021 in Lagos with a single conviction: Africa
-              cannot afford to repeat the fossil fuel mistakes of the West. We're building the
-              infrastructure to skip them entirely.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Mission statement */}
-      <section className="bg-pce-gray-light py-16 md:py-20">
-        <div className="section-padding max-w-[1440px] mx-auto">
-          <AnimatedSection>
-            <div
-              className="rounded-3xl p-10 md:p-16 relative overflow-hidden"
-              style={{ background: "#0058B3" }}
+        <div className="relative section-padding max-w-[1100px] mx-auto text-center">
+          <h2
+            className="font-bold text-white leading-tight tracking-tight mb-12"
+            style={{ fontSize: "clamp(2rem, 4vw, 3.4rem)" }}
+          >
+            Help build Africa&apos;s electric future.
+          </h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/investors"
+              className="inline-flex items-center gap-2.5 rounded-full font-semibold text-white"
+              style={{ padding: "14px 36px", fontSize: 15, background: "#0058B3", boxShadow: "0 4px 28px rgba(0,88,179,0.50)" }}
             >
-              <div
-                className="absolute top-0 right-0 w-96 h-96 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse, rgba(48,231,237,0.12) 0%, transparent 70%)" }}
-              />
-              <div
-                className="w-12 h-1 rounded-full mb-8"
-                style={{ background: "#30E7ED" }}
-              />
-              <blockquote className="text-xl md:text-3xl font-light text-white leading-relaxed max-w-3xl mb-8">
-                &ldquo;The transition to electric mobility isn&apos;t just an environmental imperative
-                — it&apos;s Africa&apos;s greatest economic opportunity. We intend to be the company
-                that captures it.&rdquo;
-              </blockquote>
-              <div>
-                <div className="text-white font-semibold">Chidi Okonkwo</div>
-                <div className="text-blue-200 text-sm">Co-founder & CEO, Phoenix Creed Energy</div>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="section-padding max-w-[1440px] mx-auto py-20 md:py-28">
-        <AnimatedSection className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-pce-dark mb-4">What we stand for</h2>
-        </AnimatedSection>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {values.map((v, i) => (
-            <AnimatedSection key={v.title} delay={i * 0.1}>
-              <div className="surface surface-hover rounded-2xl p-8 h-full">
-                <div
-                  className="w-8 h-1 rounded-full mb-6"
-                  style={{ background: "linear-gradient(90deg, #0058B3, #30E7ED)" }}
-                />
-                <h3 className="text-xl font-bold text-pce-dark mb-3">{v.title}</h3>
-                <p className="text-pce-gray leading-relaxed">{v.desc}</p>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="bg-pce-gray-light py-20 md:py-28">
-        <div className="section-padding max-w-[1440px] mx-auto">
-          <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-pce-dark mb-4">Leadership</h2>
-            <p className="text-pce-gray text-lg max-w-sm mx-auto">Six countries. One mission.</p>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {team.map((person, i) => (
-              <AnimatedSection key={person.name} delay={i * 0.08}>
-                <div className="surface surface-hover bg-white rounded-2xl p-6 flex items-center gap-4">
-                  <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-base shrink-0"
-                    style={{ background: "linear-gradient(135deg, #0058B3, #30E7ED)" }}
-                  >
-                    {person.initials}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-pce-dark">{person.name}</div>
-                    <div className="text-deep-blue text-xs font-medium mb-0.5">{person.role}</div>
-                    <div className="text-pce-gray text-xs">{person.country}</div>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
+              Investor Relations <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full font-medium text-white"
+              style={{ padding: "14px 36px", fontSize: 15, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.22)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>
-
-      <CTASection />
     </>
   );
 }
