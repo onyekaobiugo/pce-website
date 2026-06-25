@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { CTASection } from "@/components/sections/CTASection";
-import { TrendingUp, Globe2, ShieldCheck, Leaf, ArrowRight, Zap, DollarSign, BarChart3, MapPin, Target, Users, ChevronRight } from "lucide-react";
+import { TrendingUp, Globe2, ShieldCheck, Leaf, ArrowRight, Zap, DollarSign, BarChart3, MapPin, Target, Users, FileText } from "lucide-react";
 import Link from "next/link";
 
 /* ─── Section wrapper ───────────────────────────────────────── */
@@ -127,11 +127,14 @@ export default function InvestorsPage() {
                 style={{ background: "linear-gradient(135deg,#0058B3,#003d7a)", color: "white", boxShadow: "0 8px 32px rgba(0,88,179,0.35)" }}>
                 Request Investor Access <ArrowRight size={15} />
               </Link>
-              <Link href="/contact"
+              <a
+                href="/investor/Phoenix-Creed-Energy-Pitch-Deck.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-sm"
-                style={{ background: "rgba(255,255,255,0.06)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.85)" }}>
-                Download Pitch Deck <ChevronRight size={15} />
-              </Link>
+                style={{ background: "rgba(255,255,255,0.06)", backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.85)", textDecoration: "none" }}>
+                <FileText size={15} /> View Pitch Deck
+              </a>
             </div>
           </motion.div>
         </div>
